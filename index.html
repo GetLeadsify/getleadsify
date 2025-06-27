@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GetLeadsify - Generación de Leads</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #004D40;
+    }
+    header {
+      background-color: #E0F2F1;
+      text-align: center;
+      padding: 2rem;
+    }
+    header .logo-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    header img {
+      height: 200px;
+    }
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section-title {
+      font-size: 2rem;
+      color: #00796B;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .section-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #00796B;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .image-section {
+      background-color: #B2DFDB;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .image-section img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #004D40;
+      color: #E0F2F1;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #E0F2F1;
+      margin-left: 10px;
+    }
+    a {
+      color: #00796B;
+    }
+    ul {
+      list-style-position: outside;
+      padding-left: 1.2em;
+    }
+    ul li {
+      text-align: left;
+      margin-bottom: 0.75rem;
+    }
+    form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: 2rem auto;
+    }
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #000;
+    }
+    .form-footer {
+      display: flex;
+      justify-content: center;
+    }
+    .submit-button {
+      background-color: #00796B;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("custom-form");
+      if (form) {
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          const data = new FormData(form);
+
+          fetch("https://script.google.com/macros/s/AKfycbzJMhZ3OvC1ZyzISVmB6l6J35VguVVwy264undQagC2RmVmvsUTfrclWlcU1R4l00ca/exec", {
+            method: "POST",
+            body: data,
+          })
+          .then(response => {
+            if (response.ok) {
+              alert("Formulario enviado correctamente");
+              form.reset();
+            } else {
+              alert("Error al enviar el formulario");
+            }
+          })
+          .catch(error => {
+            alert("Ha ocurrido un error");
+            console.error(error);
+          });
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="https://i.imgur.com/ObGLuDU.png" alt="Logo GetLeadsify" />
+    </div>
+  </header>
+
+  <section>
+    <h2 class="section-title">Consigue leads para tu negocio</h2>
+    <p class="section-text">
+      En GetLeadsify ayudamos a negocios como el tuyo a escalar sus ventas mediante campañas estratégicas en redes sociales. Somos expertos en el sector legal y financiero, entre otros.
+    </p>
+    <ul>
+      <li><strong>Captación de leads con Meta Ads:</strong> para encontrar clientes reales interesados en tus servicios.</li>
+      <li><strong>Email nurturing:</strong> automatizamos los correos para nutrir a tus leads y aumentar la conversión.</li>
+      <li><strong>Remarketing:</strong> reimpactamos a quienes mostraron interés para aumentar tus oportunidades.</li>
+      <li><strong>Próximamente:</strong> generación de leads con Google Ads</li>
+    </ul>
+  </section>
+
+  <section class="image-section">
+    <img src="https://i.imgur.com/NZAu9hc.jpeg" alt="Social Media" />
+  </section>
+
+  <form id="custom-form">
+    <h2 class="section-title">Déjanos tus datos</h2>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required />
+
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono" name="telefono" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje"></textarea>
+
+    <div class="checkbox-wrapper">
+      <input type="checkbox" id="politica" name="politica" required />
+      <label for="politica">Acepto la <a href="/politica-de-privacidad" target="_blank">política de privacidad y protección de datos</a></label>
+    </div>
+
+    <div class="form-footer">
+      <button type="submit" class="submit-button">Enviar</button>
+    </div>
+  </form>
+
+  <section class="image-section">
+    <img src="https://i.imgur.com/4UuOa9m.jpeg" alt="Marketing" />
+  </section>
+
+  <footer>
+    <p>&copy; 2025 GetLeadsify - Hecho en Madrid con amor <a href="/politica-de-privacidad" target="_blank">Política de privacidad</a></p>
+  </footer>
+</body>
+</html>
